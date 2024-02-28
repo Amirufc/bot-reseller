@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Classes\Telegram;
+namespace App\Classes\Telegram;
 class Keyboard{
     private array $data = [];
     private string $type;

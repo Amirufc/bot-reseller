@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Classes\Telegram;
+namespace App\Classes\Telegram;
 
 class LinkPreviewOptions {
     private bool $is_disabled;

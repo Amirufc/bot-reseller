@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Classes\Telegram;
+namespace App\Classes\Telegram;
 
 use App\Classes\Classes;
 use GuzzleHttp\Client;

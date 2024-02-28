@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Classes\Telegram;
+namespace App\Classes\Telegram;
 
 class TelegramAction extends Telegram{
     public function getUpdates($options = []) {
