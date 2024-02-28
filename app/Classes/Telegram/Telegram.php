@@ -96,8 +96,8 @@ class Telegram extends Classes{
         $this->data['replay'] = $replay->toArray();
         return $this;
     }
-    public function ReplayMarkup($value = false) {
-        $this->data['ReplayMarkup'] = $value;
+    public function ReplayMarkup(Keyboard $keyboard): self {
+        $this->data['ReplayMarkup'] = json_encode($keyboard->toArray());
         return $this;
     }
     
