@@ -4,7 +4,7 @@ namespace app\Classes\Telegram;
 
 class TelegramAction extends Telegram{
     public function getUpdates($options = []) {
-        $response = $this->client->get('getUpdates', [
+        $response = $this->request()->get('getUpdates', [
             'query' => [
                 'offset' => $this->data['offset'] ?? null,
                 'limit' => $this->data['limit'] ?? null,
@@ -15,7 +15,7 @@ class TelegramAction extends Telegram{
         return json_decode($response->getBody(), true);
     }
     public function setWebhook($url) {
-        $response = $this->client->post('setWebhook', [
+        $response = $this->request()->post('setWebhook', [
             'form_params' => [
                 'url' => $url,
                 'certificate' => $this->data['certificate'] ?? null,
@@ -29,7 +29,7 @@ class TelegramAction extends Telegram{
         return json_decode($response->getBody(), true);
     }
     public function deleteWebhook() {
-        $response = $this->client->post('deleteWebhook', [
+        $response = $this->request()->post('deleteWebhook', [
             'form_params' => [
                 'drop_pending_updates' => $this->data['droppending'] ?? null,
             ]
@@ -38,12 +38,12 @@ class TelegramAction extends Telegram{
         return json_decode($response->getBody(), true);
     }
     public function getWebhookInfo() {
-        $response = $this->client->post('getWebhookInfo');
+        $response = $this->request()->post('getWebhookInfo');
     
         return json_decode($response->getBody(), true);
     }
     public function sendMessage($options = []) {
-        $response = $this->client->post('sendMessage', [
+        $response = $this->request()->post('sendMessage', [
             'form_params' => [
                 'chat_id' => $this->data['chat_id'],
                 'text' => $this->data['text'],
@@ -62,7 +62,7 @@ class TelegramAction extends Telegram{
         return json_decode($response->getBody(), true);
     }
     public function forwardMessage($options = []) {
-        $response = $this->client->post('forwardMessage', [
+        $response = $this->request()->post('forwardMessage', [
             'form_params' => [
                 'chat_id' => $this->data['chat_id'],
                 'message_thread_id' => $this->data['thread'] ?? null,
@@ -77,7 +77,7 @@ class TelegramAction extends Telegram{
         return json_decode($response->getBody(), true);
     }
     public function forwardMessages($options = []) {
-        $response = $this->client->post('forwardMessages', [
+        $response = $this->request()->post('forwardMessages', [
             'form_params' => [
                 'chat_id' => $this->data['chat_id'],
                 'message_thread_id' => $this->data['thread'] ?? null,
@@ -92,7 +92,7 @@ class TelegramAction extends Telegram{
         return json_decode($response->getBody(), true);
     }
     public function copyMessage($options = []) {
-        $response = $this->client->post('copyMessage', [
+        $response = $this->request()->post('copyMessage', [
             'form_params' => [
                 'chat_id' => $this->data['chat_id'],
                 'message_thread_id' => $this->data['thread'] ?? null,
@@ -112,7 +112,7 @@ class TelegramAction extends Telegram{
         return json_decode($response->getBody(), true);
     }
     public function copyMessages($options = []) {
-        $response = $this->client->post('copyMessages', [
+        $response = $this->request()->post('copyMessages', [
             'form_params' => [
                 'chat_id' => $this->data['chat_id'],
                 'message_thread_id' => $this->data['thread'] ?? null,
@@ -128,7 +128,7 @@ class TelegramAction extends Telegram{
         return json_decode($response->getBody(), true);
     }
     public function sendAudio($options = []) {
-        $response = $this->client->post('sendAudio', [
+        $response = $this->request()->post('sendAudio', [
             'form_params' => [
                 'chat_id' => $this->data['chat_id'],
                 'message_thread_id' => $this->data['thread'] ?? null,
@@ -151,7 +151,7 @@ class TelegramAction extends Telegram{
         return json_decode($response->getBody(), true);
     }
     public function sendDocument($options = []) {
-        $response = $this->client->post('sendDocument', [
+        $response = $this->request()->post('sendDocument', [
             'form_params' => [
                 'chat_id' => $this->data['chat_id'],
                 'message_thread_id' => $this->data['thread'] ?? null,
@@ -172,7 +172,7 @@ class TelegramAction extends Telegram{
         return json_decode($response->getBody(), true);
     }
     public function sendVideo($options = []) {
-        $response = $this->client->post('sendVideo', [
+        $response = $this->request()->post('sendVideo', [
             'form_params' => [
                 'chat_id' => $this->data['chat_id'],
                 'message_thread_id' => $this->data['thread'] ?? null,
@@ -197,7 +197,7 @@ class TelegramAction extends Telegram{
         return json_decode($response->getBody(), true);
     }
     public function sendAnimation($options = []) {
-        $response = $this->client->post('sendAnimation', [
+        $response = $this->request()->post('sendAnimation', [
             'form_params' => [
                 'chat_id' => $this->data['chat_id'],
                 'message_thread_id' => $this->data['thread'] ?? null,
@@ -221,7 +221,7 @@ class TelegramAction extends Telegram{
         return json_decode($response->getBody(), true);
     }
     public function sendVoice($options = []) {
-        $response = $this->client->post('sendVoice', [
+        $response = $this->request()->post('sendVoice', [
             'form_params' => [
                 'chat_id' => $this->data['chat_id'],
                 'message_thread_id' => $this->data['thread'] ?? null,
@@ -242,7 +242,7 @@ class TelegramAction extends Telegram{
         return json_decode($response->getBody(), true);
     }
     public function sendVideoNote($options = []) {
-        $response = $this->client->post('sendVideoNote', [
+        $response = $this->request()->post('sendVideoNote', [
             'form_params' => [
                 'chat_id' => $this->data['chat_id'],
                 'message_thread_id' => $this->data['thread'] ?? null,
@@ -260,7 +260,7 @@ class TelegramAction extends Telegram{
         return json_decode($response->getBody(), true);
     }
     public function sendMediaGroup($options = []) {
-        $response = $this->client->post('sendMediaGroup', [
+        $response = $this->request()->post('sendMediaGroup', [
             'form_params' => [
                 'chat_id' => $this->data['chat_id'],
                 'message_thread_id' => $this->data['thread'] ?? null,
@@ -275,7 +275,7 @@ class TelegramAction extends Telegram{
         return json_decode($response->getBody(), true);
     }
     public function sendLocation($options = []) {
-        $response = $this->client->post('sendLocation', [
+        $response = $this->request()->post('sendLocation', [
             'form_params' => [
                 'chat_id' => $this->data['chat_id'],
                 'message_thread_id' => $this->data['thread'] ?? null,
@@ -296,7 +296,7 @@ class TelegramAction extends Telegram{
         return json_decode($response->getBody(), true);
     }
     public function sendVenue($options = []) {
-        $response = $this->client->post('sendVenue', [
+        $response = $this->request()->post('sendVenue', [
             'form_params' => [
                 'chat_id' => $this->data['chat_id'],
                 'message_thread_id' => $this->data['thread'] ?? null,
@@ -320,7 +320,7 @@ class TelegramAction extends Telegram{
         return json_decode($response->getBody(), true);
     }
     public function sendContact($options = []) {
-        $response = $this->client->post('sendContact', [
+        $response = $this->request()->post('sendContact', [
             'form_params' => [
                 'chat_id' => $this->data['chat_id'],
                 'message_thread_id' => $this->data['thread'] ?? null,
@@ -338,7 +338,7 @@ class TelegramAction extends Telegram{
         return json_decode($response->getBody(), true);
     }
     public function sendChatAction($options = []) {
-        $response = $this->client->post('sendChatAction', [
+        $response = $this->request()->post('sendChatAction', [
             'form_params' => [
                 'chat_id' => $this->data['chat_id'],
                 'message_thread_id' => $this->data['thread'] ?? null,
@@ -349,7 +349,7 @@ class TelegramAction extends Telegram{
         return json_decode($response->getBody(), true);
     }
     public function getUserProfilePhotos($options = []) {
-        $response = $this->client->post('getUserProfilePhotos', [
+        $response = $this->request()->post('getUserProfilePhotos', [
             'form_params' => [
                 'user_id' => $this->data['userid'],
                 'offset' => $this->data['offset'] ?? null,
@@ -359,10 +359,75 @@ class TelegramAction extends Telegram{
         ]);
         return json_decode($response->getBody(), true);
     }
-    public function getFile($options = []) {
-        $response = $this->fileurl->get('getFile', [
-            'query' => [
-                'file_id' => $this->data['filepath'],
+    public function getFile() {
+        $response = $this->request(true)->get($this->data['filepath']);
+        return json_decode($response->getBody(), true);
+    }
+    public function exportChatInviteLink($options = []) {
+        $response = $this->request()->post('exportChatInviteLink', [
+            'form_params' => [
+                'chat_id' => $this->data['chat_id'],
+                ...$options
+            ]
+        ]);
+        return json_decode($response->getBody(), true);
+    }
+    public function createChatInviteLink($options = []) {
+        $response = $this->request()->post('createChatInviteLink', [
+            'form_params' => [
+                'chat_id' => $this->data['chat_id'],
+                'name' => $this->data['name'] ?? null,
+                'expire_date' => $this->data['expireday'] ?? null,
+                'member_limit' => $this->data['totalmember'] ?? null,
+                'creates_join_request' => $this->data['activewaitinglist'] ?? null,
+                ...$options
+            ]
+        ]);
+        return json_decode($response->getBody(), true);
+    }
+    public function revokeChatInviteLink($options = []) {
+        $response = $this->request()->post('revokeChatInviteLink', [
+            'form_params' => [
+                'chat_id' => $this->data['chat_id'],
+                'invite_link' => $this->data['invitelink'],
+                ...$options
+            ]
+        ]);
+        return json_decode($response->getBody(), true);
+    }
+    public function approveChatJoinRequest($options = []) {
+        $response = $this->request()->post('approveChatJoinRequest', [
+            'form_params' => [
+                'chat_id' => $this->data['chat_id'],
+                'user_id' => $this->data['userid'],
+                ...$options
+            ]
+        ]);
+        return json_decode($response->getBody(), true);
+    }
+    public function declineChatJoinRequest($options = []) {
+        $response = $this->request()->post('declineChatJoinRequest', [
+            'form_params' => [
+                'chat_id' => $this->data['chat_id'],
+                'user_id' => $this->data['userid'],
+                ...$options
+            ]
+        ]);
+        return json_decode($response->getBody(), true);
+    }
+    public function leaveChat($options = []) {
+        $response = $this->request()->post('leaveChat', [
+            'form_params' => [
+                'chat_id' => $this->data['chat_id'],
+                ...$options
+            ]
+        ]);
+        return json_decode($response->getBody(), true);
+    }
+    public function getChat($options = []) {
+        $response = $this->request()->post('getChat', [
+            'form_params' => [
+                'chat_id' => $this->data['chat_id'],
                 ...$options
             ]
         ]);
